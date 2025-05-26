@@ -1,0 +1,48 @@
+{
+  "name": "@kriegcc/react-cookie-consent",
+  "version": "0.1.0",
+  "description": "A customizable cookie consent component for React projects.",
+  "main": "dist/react-cookie-consent.umd.js",
+  "module": "dist/react-cookie-consent.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --p ./tsconfig.build.json && vite build",
+    "demo": "vite --port 3000 --open",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
+    "format": "prettier . --check",
+    "format-fix": "prettier . --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kriegcc/react-cookie-consent.git"
+  },
+  "keywords": ["react", "cookie", "consent", "gdpr"],
+  "author": "kriegcc",
+  "license": "MIT",
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.0",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.1.0",
+    "prettier": "^3.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  }
+}
