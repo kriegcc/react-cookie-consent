@@ -1,0 +1,58 @@
+{
+  "categories": [
+    {
+      "id": "necessary",
+      "title": "Notwendige Cookies",
+      "description": "Diese Cookies sind für das ordnungsgemäße Funktionieren der Website unerlässlich. Sie ermöglichen grundlegende Funktionen wie Seitennavigation und Zugriff auf sichere Bereiche der Website. Da sie für den Betrieb der Seite erforderlich sind, benötigen sie keine Zustimmung und können nicht deaktiviert werden.",
+      "isMandatory": true,
+      "cookies": [
+        {
+          "key": "cookie_consent_preferences",
+          "description": "Dieses Cookie speichert Ihre Cookie-Einstellungen für diese Website, um sicherzustellen, dass nur Ihre ausgewählten Cookie-Einstellungen während Ihres Besuchs und bei zukünftigen Besuchen angewendet werden. Es bleibt 30 Tage lang auf Ihrem Gerät, bevor es erneuert werden muss.",
+          "location": "Cookie",
+          "duration": "30 Tage"
+        }
+      ]
+    },
+    {
+      "id": "functional",
+      "title": "Funktionale Cookies",
+      "description": "Funktionale Cookies ermöglichen es der Website, verbesserte Funktionalität und Personalisierung bereitzustellen. Sie können von mir oder von Drittanbietern gesetzt werden, deren Dienste ich zu unseren Seiten hinzugefügt habe. Wenn Sie diese Cookies nicht zulassen, können einige oder alle dieser Dienste nicht richtig funktionieren.",
+      "isMandatory": false,
+      "cookies": [
+        {
+          "key": "language",
+          "description": "Dieses Cookie merkt sich Ihre Spracheinstellung auf der Website, sodass die Seite Inhalte in Ihrer bevorzugten Sprache während Ihrer aktuellen Sitzung präsentieren kann.",
+          "location": "SessionStorage",
+          "duration": "Sitzung"
+        },
+        {
+          "key": "theme",
+          "description": "Dieses Cookie speichert Ihre Themeneinstellungen, wie z.B. den Dunkel- oder Hellmodus, und verbessert so Ihr visuelles Erlebnis auf der Website. Ihr ausgewähltes Thema wird gespeichert, bis Sie sich entscheiden, es zu ändern.",
+          "location": "LocalStorage",
+          "duration": "bis zur Aufhebung"
+        },
+        {
+          "key": "cv",
+          "description": "Dieses Cookie wird gesetzt, nachdem Sie eine CAPTCHA-Herausforderung erfolgreich gelöst haben, um die Website vor Spam und Missbrauch durch automatisierte Software zu schützen. Es wird für die Dauer Ihrer Sitzung gespeichert.",
+          "location": "SessionStorage",
+          "duration": "Sitzung"
+        }
+      ]
+    },
+    {
+      "id": "analytics",
+      "title": "Analyse-Cookies",
+      "description": "Analyse-Cookies helfen mir zu verstehen, wie Besucher mit der Website interagieren, indem sie Informationen anonym sammeln und melden. Diese Daten helfen mir, die Website und Ihr Surf-Erlebnis zu verbessern. Diese Cookies werden nur mit Ihrer Zustimmung gesetzt.",
+      "isMandatory": false,
+      "cookies": []
+    },
+    {
+      "id": "advertisement",
+      "title": "Werbe-Cookies",
+      "description": "Werbe-Cookies werden verwendet, um Ihnen relevante Anzeigen und Marketingkampagnen zu liefern. Sie verfolgen Besucher über Websites hinweg und sammeln Informationen, um angepasste Anzeigen bereitzustellen. Diese Cookies werden nur gesetzt, wenn Sie Ihre Zustimmung geben.",
+      "isMandatory": false,
+      "cookies": []
+    }
+  ]
+}
