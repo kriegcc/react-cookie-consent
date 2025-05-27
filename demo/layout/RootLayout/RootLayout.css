@@ -1,0 +1,26 @@
+.wrapper {
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header,
+.page-footer {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.page-body {
+  flex-grow: 1;
+  display: flex;
+}
+
+.page-main-content {
+  margin: 0.5rem;
+  padding: 1rem;
+  background-color: var(--background-color-content);
+  border-radius: 0.5em;
+  width: 100%;
+}

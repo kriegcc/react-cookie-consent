@@ -5,6 +5,13 @@ import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
 
 export default defineConfig({
+  // need to be in-sync with paths aliases in tsconfig
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "src"),
+      "@demo": resolve(__dirname, "demo"),
+    },
+  },
   plugins: [react(), dts({ include: ["src"], exclude: ["demo"] })],
   build: {
     lib: {

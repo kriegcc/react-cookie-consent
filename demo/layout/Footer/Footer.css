@@ -1,0 +1,17 @@
+.footer {
+  border-top: 0.2rem solid var(--border-color-layout);
+  padding: 0.5rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
