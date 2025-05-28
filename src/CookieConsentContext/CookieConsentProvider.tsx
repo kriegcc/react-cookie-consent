@@ -1,6 +1,7 @@
 import { FC, ReactNode, useEffect, useState } from "react"
 
 import { ConsentStorageProvider } from "@/ConsentStorage/context/ConsentStorageProvider"
+import { FALLBACK_LANGUAGE } from "@/constants"
 import { CookieCategories, CookieCategory, CookieCategoryId } from "@/Cookie/Cookies"
 import { getTranslatedCookieData } from "@/Cookie/util/getTranslatedCookieData"
 import { CookieConsentModalProvider } from "@/CookieConsentModalContext/CookieConsentModalProvider"
@@ -22,11 +23,14 @@ import {
 } from "./storedCookieConsentUtils"
 
 export type CookieConsentProviderProps = {
-  language: Language
+  language?: Language
   children?: ReactNode
 }
 
-export const CookieConsentProvider: FC<CookieConsentProviderProps> = ({ language, children }) => {
+export const CookieConsentProvider: FC<CookieConsentProviderProps> = ({
+  language = FALLBACK_LANGUAGE,
+  children,
+}) => {
   const initialCookieCategories = fetchAndInitializeLocalizedCookieCategories(language)
   const [cookieCategories, setCookieCategories] =
     useState<CookieCategories>(initialCookieCategories)

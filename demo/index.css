@@ -1,7 +1,12 @@
 :root {
   --background-color-layout: #dae9f7;
-  --background-color-content: #c8d5e1;
   --background-color-layout-highlight: #c8d5e1;
+
+  --background-color-content: #c8d5e1;
+  --background-color-content-highlight: #dae9f7;
+
+  --toggle-background-color-disabled: #faaeae;
+  --toggle-background-color-enabled: #00ff00;
 
   --border-color-layout: #000;
 
