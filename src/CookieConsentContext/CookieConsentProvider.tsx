@@ -1,11 +1,8 @@
 import { FC, ReactNode, useEffect, useState } from "react"
 
 import { ConsentStorageProvider } from "@/ConsentStorage/context/ConsentStorageProvider"
-import { FALLBACK_LANGUAGE } from "@/constants"
 import { CookieCategories, CookieCategory, CookieCategoryId } from "@/Cookie/Cookies"
-import { getTranslatedCookieData } from "@/Cookie/util/getTranslatedCookieData"
 import { CookieConsentModalProvider } from "@/CookieConsentModalContext/CookieConsentModalProvider"
-import { Language } from "@/types"
 
 import {
   CookieConsentContext,
@@ -23,31 +20,28 @@ import {
 } from "./storedCookieConsentUtils"
 
 export type CookieConsentProviderProps = {
-  language?: Language
+  initialCookieCategories: CookieCategories
   children?: ReactNode
 }
 
 export const CookieConsentProvider: FC<CookieConsentProviderProps> = ({
-  language = FALLBACK_LANGUAGE,
+  initialCookieCategories,
   children,
 }) => {
-  const initialCookieCategories = fetchAndInitializeLocalizedCookieCategories(language)
   const [cookieCategories, setCookieCategories] =
     useState<CookieCategories>(initialCookieCategories)
 
-  const [isConsentRequired, setIsConsentRequired] = useState(false)
+  const [isConsentRequired, setIsConsentRequired] = useState(!wasConsentGiven())
 
+  // initialCookieCategories can be changed by consumer, for example when switching language
   useEffect(() => {
-    setIsConsentRequired(!wasConsentGiven())
-  }, [])
-
-  useEffect(() => {
-    const cookieCategories = fetchAndInitializeLocalizedCookieCategories(language)
+    const cookieCategories =
+      setCookieCategoriesIsEnabledAccordingToStoredPreferences(initialCookieCategories)
     setCookieCategories(cookieCategories)
     return () => {
       storeConsensualCookieCategoryIds(getConsensualCookieCategoryIds(cookieCategories))
     }
-  }, [language])
+  }, [initialCookieCategories])
 
   const toggleCategoryIsEnable = (cookieCategoryId: CookieCategoryId) => {
     const cookieCategory = cookieCategories.get(cookieCategoryId)
@@ -133,11 +127,11 @@ export const CookieConsentProvider: FC<CookieConsentProviderProps> = ({
   )
 }
 
-function fetchAndInitializeLocalizedCookieCategories(language: Language): CookieCategories {
-  const cookieCategories = getTranslatedCookieData(language)
-  setCookieCategoriesIsEnabledAccordingToStoredPreferences(cookieCategories)
-  return cookieCategories
-}
+// function fetchAndInitializeLocalizedCookieCategories(language: Language): CookieCategories {
+//   const cookieCategories = getTranslatedCookieData(language)
+//   setCookieCategoriesIsEnabledAccordingToStoredPreferences(cookieCategories)
+//   return cookieCategories
+// }
 
 function getConsensualCookieCategoryIds(cookieCategories: CookieCategories): CookieCategoryId[] {
   return Array.from(cookieCategories.values())

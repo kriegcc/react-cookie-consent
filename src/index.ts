@@ -6,11 +6,15 @@ export { useCookieConsent } from "./CookieConsentContext/useCookieConsent"
 
 // modal context
 
-// consent data structures and types
-// Cookie data
+// Cookie data structure
 export { Cookie, CookieCategory } from "./Cookie/Cookies"
 export type { CookieStorage, CookieCategoryId, CookieCategories } from "./Cookie/Cookies"
+// cookie utils
+export { validateCookiesJsonFile, loadCookies } from "./Cookie/util/getTranslatedCookieData"
+export type {
+  CookieData,
+  CookieCategoryData,
+  CookiesFile,
+} from "./Cookie/util/getTranslatedCookieData"
 
 // misc
-export { Language } from "./types"
-export { FALLBACK_LANGUAGE } from "./constants"

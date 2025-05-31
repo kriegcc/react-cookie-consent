@@ -7,18 +7,15 @@ import {
   isCookieCategoryId,
   isCookieStorage,
 } from "@/Cookie/Cookies"
-import cookiesDeJson from "@/data/cookies_de.json"
-import cookiesEnJson from "@/data/cookies_en.json"
-import { Language } from "@/types"
 
-type CookieData = {
+export type CookieData = {
   key: string
   description: string
   location: CookieStorage
   duration: string
 }
 
-type CookieCategoryData = {
+export type CookieCategoryData = {
   id: CookieCategoryId
   title: string
   description: string
@@ -26,14 +23,14 @@ type CookieCategoryData = {
   cookies: CookieData[]
 }
 
-type CookiesFile = {
+export type CookiesFile = {
   categories: CookieCategoryData[]
 }
 
 // Validation function to check if the imported json conforms to the CookiesFile type
 // TypeScript treats the imported data as any type because it is not able to infer the structure of the JSON data at compile time
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function validateCookiesJsonFile(data: any): data is CookiesFile {
+export function validateCookiesJsonFile(data: any): data is CookiesFile {
   if (!Array.isArray(data.categories)) {
     return false
   }
@@ -61,7 +58,7 @@ function validateCookiesJsonFile(data: any): data is CookiesFile {
   return true
 }
 
-function loadCookies(cookiesFile: CookiesFile): CookieCategories {
+export function loadCookies(cookiesFile: CookiesFile): CookieCategories {
   const categories: CookieCategories = new Map<CookieCategoryId, CookieCategory>()
 
   cookiesFile.categories.map((categoryData: CookieCategoryData) => {
@@ -84,20 +81,4 @@ function loadCookies(cookiesFile: CookiesFile): CookieCategories {
   })
 
   return categories
-}
-
-const cookiesEnFile = validateCookiesJsonFile(cookiesEnJson) ? cookiesEnJson : { categories: [] }
-const cookiesDeFile = validateCookiesJsonFile(cookiesDeJson) ? cookiesDeJson : { categories: [] }
-
-export function getTranslatedCookieData(language: Language) {
-  switch (language) {
-    case Language.English:
-      return loadCookies(cookiesEnFile)
-    case Language.German:
-      return loadCookies(cookiesDeFile)
-    default:
-      console.warn(`No cookie translations for "${language}" available.`)
-      // return English as fallback
-      return loadCookies(cookiesEnFile)
-  }
 }
