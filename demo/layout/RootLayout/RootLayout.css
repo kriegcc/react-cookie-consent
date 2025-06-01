@@ -18,8 +18,8 @@
 }
 
 .page-main-content {
-  margin: 0.5rem;
-  padding: 1rem;
+  margin: 0.5em;
+  padding: 1em;
   background-color: var(--background-color-content);
   border-radius: 0.5em;
   width: 100%;

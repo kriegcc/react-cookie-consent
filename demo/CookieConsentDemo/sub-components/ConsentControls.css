@@ -1,0 +1,39 @@
+.consent-controls-content {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5em 1em;
+  align-items: flex-start;
+}
+
+.consent-controls-content__label {
+  font-weight: 500;
+}
+
+.consent-controls-content__label.indented {
+  margin-left: 2em;
+}
+
+.consent-controls-content__control {
+  width: fit-content;
+}
+
+.consent-controls-content__control-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: flex-start;
+  width: max-content;
+}
+
+.consent-controls-content__control-container > button {
+  width: 100%;
+}
+
+.consent-controls-content__hint {
+  margin: 1em 0;
+  padding: 0.5em;
+  background-color: var(--background-color-warning);
+  border: 0.1em solid var(--border-color-layout);
+  border-radius: 0.5em;
+  width: fit-content;
+}

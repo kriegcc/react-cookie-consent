@@ -1,16 +1,20 @@
 :root {
   --background-color-layout: #dae9f7;
+  --background-color-layout-header: #a1abb5;
+  --background-color-layout-footer: #a1abb5;
   --background-color-layout-highlight: #c8d5e1;
 
   --background-color-content: #c8d5e1;
   --background-color-content-highlight: #dae9f7;
 
-  --toggle-background-color-disabled: #faaeae;
-  --toggle-background-color-enabled: #00ff00;
+  --background-color-success: #b3fcb3;
+  --background-color-warning: #fdd892;
 
   --border-color-layout: #000;
 
   --text-color: #000000;
+  --text-color-success: #008000;
+  --text-color-warning: #964901;
 }
 
 body {
@@ -24,4 +28,8 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+a {
+  color: inherit;
 }

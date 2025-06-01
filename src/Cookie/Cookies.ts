@@ -15,6 +15,10 @@ export class Cookie {
     this.location = location
     this.duration = duration
   }
+
+  clone(): Cookie {
+    return new Cookie(this.key, this.description, this.location, this.duration)
+  }
 }
 
 export class CookieCategory {
@@ -56,6 +60,19 @@ export class CookieCategory {
       return
     }
     this.isEnabled = false
+  }
+
+  clone(): CookieCategory {
+    const cookieCategory = new CookieCategory(
+      this.id,
+      this.title,
+      this.description,
+      this.isMandatory,
+    )
+    cookieCategory.isEnabled = this.isEnabled
+    // need to deep copy cookies array as well
+    cookieCategory.cookies = this.cookies.map((cookie) => cookie.clone())
+    return cookieCategory
   }
 }
 

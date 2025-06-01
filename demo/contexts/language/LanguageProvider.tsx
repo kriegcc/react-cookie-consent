@@ -1,10 +1,6 @@
 import { FC, ReactNode, useState } from "react"
 
-// import { DEFAULT_LANGUAGE, Language } from "@demo/types"
-// import { DEFAULT_LANGUAGE, Language } from "@demo/types"
-
-import { Language } from "@/index"
-import { DEFAULT_LANGUAGE } from "@demo/types"
+import { DEFAULT_LANGUAGE, Language } from "@demo/types"
 
 import { LanguageContext } from "./LanguageContext"
 

@@ -1,39 +1,29 @@
 import { useEffect, useState } from "react"
 
-import { CookieConsentProvider, loadCookies, validateCookiesJsonFile } from "@/index"
-import cookiesDeJson from "@demo/data/cookies_de.json"
-import cookiesEnJson from "@demo/data/cookies_en.json"
+import { CookieConsentProvider } from "@/index"
 
-import { CookieConsentDemo } from "./components/CookieConsentDemo/CookieConsentDemo"
-import { LanguageProvider } from "./contexts/LanguageProvider"
-import { useLanguage } from "./contexts/useLanguage"
-import { Navigation } from "./layout/Navigation/Navigation"
+import { LanguageProvider } from "./contexts/language/LanguageProvider"
+import { useLanguage } from "./contexts/language/useLanguage"
+import { CookieConsentDemo } from "./CookieConsentDemo/CookieConsentDemo"
 import { RootLayout } from "./layout/RootLayout/RootLayout"
-import { Language, Page } from "./types"
+import { getLocalizedCookieCategories } from "./utils/cookie-utils"
 
-const cookiesEnFile = validateCookiesJsonFile(cookiesEnJson) ? cookiesEnJson : { categories: [] }
-const cookiesDeFile = validateCookiesJsonFile(cookiesDeJson) ? cookiesDeJson : { categories: [] }
-
-// main application UI
+// main app UI
 function App() {
-  const [page, setPage] = useState<Page>(Page.Home)
-
   return (
-    <RootLayout navigation={<Navigation currentPage={page} onNavigate={setPage} />}>
-      {/* {page === "home" && <Home />}
-      {page === "second" && <Second />} */}
+    <RootLayout>
       <CookieConsentDemo />
     </RootLayout>
   )
 }
 
+// wraps main app with the cookie consent provider which supports localization
 function AppProviders({ children }: { children: React.ReactNode }) {
   const { language } = useLanguage()
-
-  const [cookieCategories, setCookieCategories] = useState(getTranslatedCookieData(language))
+  const [cookieCategories, setCookieCategories] = useState(getLocalizedCookieCategories(language))
 
   useEffect(() => {
-    setCookieCategories(getTranslatedCookieData(language))
+    setCookieCategories(getLocalizedCookieCategories(language))
   }, [language])
 
   return (
@@ -43,7 +33,7 @@ function AppProviders({ children }: { children: React.ReactNode }) {
   )
 }
 
-// wraps everything with all providers
+// wraps everything with all providers (language provider is added)
 function RootApp() {
   return (
     <LanguageProvider>
@@ -55,16 +45,3 @@ function RootApp() {
 }
 
 export default RootApp
-
-function getTranslatedCookieData(language: Language) {
-  switch (language) {
-    case Language.English:
-      return loadCookies(cookiesEnFile)
-    case Language.German:
-      return loadCookies(cookiesDeFile)
-    default:
-      console.warn(`No cookie translations for "${language}" available.`)
-      // return English as fallback
-      return loadCookies(cookiesEnFile)
-  }
-}

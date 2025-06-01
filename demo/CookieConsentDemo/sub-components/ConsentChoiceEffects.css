@@ -1,0 +1,15 @@
+.consent-choice-effects .effect-element {
+  width: fit-content;
+  padding: 1em;
+  margin: 1em 0;
+  border: 0.1em solid var(--border-color-layout);
+  border-radius: 0.5em;
+}
+
+.consent-choice-effects .effect-element.enabled {
+  background-color: var(--background-color-success);
+}
+
+.consent-choice-effects .effect-element.disabled {
+  background-color: var(--background-color-warning);
+}

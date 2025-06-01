@@ -1,10 +1,10 @@
 .footer {
-  border-top: 0.2rem solid var(--border-color-layout);
-  padding: 0.5rem;
+  padding: 0.5em 1em;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--background-color-layout-footer);
 }
 
 .footer ul {
@@ -14,4 +14,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.footer__credit {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }

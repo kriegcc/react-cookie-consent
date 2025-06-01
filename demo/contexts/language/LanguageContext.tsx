@@ -1,6 +1,6 @@
 import { createContext } from "react"
 
-import { Language } from "@/types"
+import { Language } from "@demo/types"
 
 export type LanguageContextProps = {
   language: Language

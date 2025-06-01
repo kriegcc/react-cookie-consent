@@ -3,7 +3,7 @@
     {
       "id": "necessary",
       "title": "Necessary Cookies",
-      "description": "These cookies are essential for the website to function properly. They enable basic functionalities like page navigation and access to secure areas of the website. As they are required for the operation of the site, they do not require your consent and cannot be turned off.",
+      "description": "These cookies are essential for the website to function properly. As they are required for the operation of the site, they do not require your consent and cannot be turned off.",
       "isMandatory": true,
       "cookies": [
         {
@@ -17,7 +17,7 @@
     {
       "id": "functional",
       "title": "Functional Cookies",
-      "description": "Functional cookies allow the website to provide enhanced functionality and personalization. They may be set by me or by third-party providers whose services I have added to my pages. If you do not allow these cookies, some or all of these services may not function properly.",
+      "description": "Functional cookies allow the website to provide enhanced functionality and personalization. They may be set by this website or by third-party providers whose services have been added. If you do not allow these cookies, some or all of these services may not function properly.",
       "isMandatory": false,
       "cookies": [
         {
@@ -31,21 +31,22 @@
           "description": "This cookie saves your theme preferences, such as dark or light mode, enhancing your visual experience on the website. Your selected theme will be remembered until you decide to change it.",
           "location": "LocalStorage",
           "duration": "until revocation"
-        },
-        {
-          "key": "cv",
-          "description": "This cookie is set after you successfully solve a CAPTCHA challenge, helping to protect the website against spam and abuse by automated software. It is stored for the duration of your session.",
-          "location": "SessionStorage",
-          "duration": "session"
         }
       ]
     },
     {
       "id": "analytics",
       "title": "Analytics Cookies",
-      "description": "Analytics cookies help me understand how visitors interact with the website by collecting and reporting information anonymously. This data helps me improve the website and your browsing experience. These cookies will only be set with your consent.",
+      "description": "Analytics cookies help to understand how visitors interact with the website by collecting and reporting information anonymously. This data helps to improve the website and your browsing experience. These cookies will only be set with your consent.",
       "isMandatory": false,
-      "cookies": []
+      "cookies": [
+        {
+          "key": "example_analytics",
+          "description": "This cookie stores some data of example_analytics.",
+          "location": "LocalStorage",
+          "duration": "until revocation"
+        }
+      ]
     },
     {
       "id": "advertisement",

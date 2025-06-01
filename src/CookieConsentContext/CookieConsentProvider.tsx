@@ -28,18 +28,26 @@ export const CookieConsentProvider: FC<CookieConsentProviderProps> = ({
   initialCookieCategories,
   children,
 }) => {
-  const [cookieCategories, setCookieCategories] =
-    useState<CookieCategories>(initialCookieCategories)
+  // Process (set the enabled state) of the passed "initialCookieCategories" before storing in state:
+  // "cookieCategories" are exposed by this provider and immediately used by consumers such as "ConsentStorageProvider" to load or delete cookies and storage items accordingly.
+  // Using unprocessed (uninitialized) categories here would result in all items being deleted or incorrect consent logic.
+  const processedInitialCookieCategories =
+    setCookieCategoriesIsEnabledAccordingToStoredPreferences(initialCookieCategories)
+  const [cookieCategories, setCookieCategories] = useState<CookieCategories>(
+    processedInitialCookieCategories,
+  )
 
   const [isConsentRequired, setIsConsentRequired] = useState(!wasConsentGiven())
 
   // initialCookieCategories can be changed by consumer, for example when switching language
   useEffect(() => {
-    const cookieCategories =
+    const processedInitialCookieCategories =
       setCookieCategoriesIsEnabledAccordingToStoredPreferences(initialCookieCategories)
-    setCookieCategories(cookieCategories)
+    setCookieCategories(processedInitialCookieCategories)
     return () => {
-      storeConsensualCookieCategoryIds(getConsensualCookieCategoryIds(cookieCategories))
+      storeConsensualCookieCategoryIds(
+        getConsensualCookieCategoryIds(processedInitialCookieCategories),
+      )
     }
   }, [initialCookieCategories])
 
@@ -127,12 +135,6 @@ export const CookieConsentProvider: FC<CookieConsentProviderProps> = ({
   )
 }
 
-// function fetchAndInitializeLocalizedCookieCategories(language: Language): CookieCategories {
-//   const cookieCategories = getTranslatedCookieData(language)
-//   setCookieCategoriesIsEnabledAccordingToStoredPreferences(cookieCategories)
-//   return cookieCategories
-// }
-
 function getConsensualCookieCategoryIds(cookieCategories: CookieCategories): CookieCategoryId[] {
   return Array.from(cookieCategories.values())
     .filter((category) => category.isEnabled)
@@ -143,10 +145,16 @@ function setCookieCategoriesIsEnabledAccordingToStoredPreferences(
   cookieCategories: CookieCategories,
 ): CookieCategories {
   const storedConsensualCookieCategories = getStoredConsensualCookieCategoryIds()
-  cookieCategories.forEach((cookieCategory, cookieCategoryId) => {
-    if (storedConsensualCookieCategories.includes(cookieCategoryId)) {
-      cookieCategory.enable()
-    }
-  })
-  return cookieCategories
+  // This method must be pure! Therefore, return a new object.
+  return new Map(
+    Array.from(cookieCategories.entries()).map(([cookieCategoryId, cookieCategory]) => {
+      const copiedCookieCategory = cookieCategory.clone()
+      if (storedConsensualCookieCategories.includes(cookieCategoryId)) {
+        copiedCookieCategory.enable()
+      } else {
+        copiedCookieCategory.disable()
+      }
+      return [cookieCategoryId, copiedCookieCategory]
+    }),
+  )
 }

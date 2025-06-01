@@ -22,6 +22,8 @@ export const ConsentStorageProvider: FC<{ children?: ReactNode }> = ({ children 
   useEffect(() => {
     // TODO: currently triggers handleConsentRevocation in manager each time cookieCategories change
     // Maybe check if a category actually change to avoid unnecessary computation.
+    // TODO 2: need to avoid to act on "uninitialized" (enable status) cookieCategories.
+    // Otherwise, cookies are deleted.
     consentStorageManager.updateConsentStatus(toConsentStatus(cookieCategories))
   }, [consentStorageManager, cookieCategories])
 
