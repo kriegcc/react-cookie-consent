@@ -1,7 +1,7 @@
 {
   "name": "@kriegcc/react-cookie-consent",
   "version": "0.1.0",
-  "description": "A customizable cookie consent component for React projects.",
+  "description": "A flexible, extensible library for managing user cookie consent in React applications.",
   "main": "dist/react-cookie-consent.umd.js",
   "module": "dist/react-cookie-consent.es.js",
   "types": "dist/index.d.ts",
