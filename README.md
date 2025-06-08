@@ -35,7 +35,7 @@ Have a look at the [demo app](#demo-app) for a full example of how to integrate 
    - Use the provided hooks and functions to build a cookie consent banner, modal, or dialog.
    - Allow users to accept, reject, or customize their consent.
 
-5. **Store Data Securely**
+5. **Store Data Accordingly**
    - When storing data in cookies, localStorage, or sessionStorage, use the `useConsentStorage` hook.
    - This ensures that data is only stored according to the user’s consent preferences.
 

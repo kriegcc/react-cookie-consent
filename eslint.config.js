@@ -79,10 +79,5 @@ export default tseslint.config(
       },
     },
   },
-  // ...storybook.configs["flat/recommended"],
-  // {
-  //   files: ["**/*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
-  //   rules: {},
-  // },
   eslintPluginPrettierRecommended,
 )
