@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { resolve } from "path"
 
 import react from "@vitejs/plugin-react"
@@ -28,5 +29,9 @@ export default defineConfig({
         },
       },
     },
+  },
+  test: {
+    // custom Vitest options
+    watch: false,
   },
 })

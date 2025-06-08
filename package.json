@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "build": "tsc --p ./tsconfig.build.json && vite build",
+    "test": "vitest",
     "demo": "vite --port 3000 --open",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
@@ -54,7 +55,8 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1",
     "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.2.2"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
