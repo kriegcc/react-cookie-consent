@@ -14,6 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.1.1] - 2025-06-26
+
+### Fixed
+
+- Fix build configuration
+- Export missing type "CookieConsentDetails"
+- Export missing hook "useCookieConsentModal"
+
 ## [0.1.0] - 2025-06-08
 
 ### Added

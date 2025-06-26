@@ -17,8 +17,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "ReactSimpleContext",
-      fileName: (format) => `react-simple-context.${format}.js`,
+      name: "ReactCookieConsent",
+      fileName: (format) => `react-cookie-consent.${format}.js`,
     },
     rollupOptions: {
       external: ["react", "react-dom"],
