@@ -33,5 +33,12 @@ export default defineConfig({
   test: {
     // custom Vitest options
     watch: false,
+    environment: "happy-dom",
+    setupFiles: ["tests/setup.ts"],
+    include: [
+      "src/**/*.{test,spec}.{ts,tsx}",
+      "tests/**/*.{test,spec}.{ts,tsx}",
+      "demo/**/*.{test,spec}.{ts,tsx}",
+    ],
   },
 })
